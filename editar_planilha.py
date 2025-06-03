@@ -23,8 +23,9 @@ workbook é o que seria a planilha excel, portanto, a funcionalidade load_workbo
 from openpyxl import load_workbook
 
 print('Qual o nome do arquivo que você gostaria de editar?')
-nome_arquivo = input('Digite o nome do arquivo: ')
+# nome_arquivo = input('Digite o nome do arquivo: ')
 try:
+    nome_arquivo = "D:\\Sandeison\\Downloads\\Nova_pasta\\sistema-de-arquivos\\planilha"
     arquivo = f'{nome_arquivo}.xlsx'
     wb = load_workbook(arquivo)
     planilha = wb.active
@@ -38,7 +39,7 @@ try:
         for celula in fileira:
             valor = celula.value
             if valor == texto:
-                valor = mudar
+                celula.value = mudar
                 wb.save(arquivo)
                 alterado = True
     if alterado: print('O documento foi alterado e salvo com sucesso! Recomendo que feche e abra o arquivo.')
