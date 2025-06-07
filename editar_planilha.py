@@ -20,6 +20,28 @@ workbook é o que seria a planilha excel, portanto, a funcionalidade load_workbo
 53 e 54 caso não consiga por causa de erro em localizar o arquivo, avisa que não foi possível encontrar o arquivo e o código para.
 
 '''
+import os
+import tkinter as tk
+from tkinter import filedialog
+
+root = tk.Tk()
+root.withdraw()
+
+diretorio = filedialog.askdirectory(title="Selecione uma pasta")
+
+extensoes_excel = (".xlsx", ".xls")
+
+if diretorio:
+    print(f"Listando arquivos Excel em: {diretorio}\n")
+
+    for pasta_atual, subpastas, arquivos in os.walk(diretorio):
+        for arquivo in arquivos:
+            if arquivo.lower().endswith(extensoes_excel):
+                caminho_completo = os.path.join(pasta_atual, arquivo)
+                print(caminho_completo)
+else:
+    print("Nenhum diretório foi selecionado.")
+
 from openpyxl import load_workbook
 from tkinter.filedialog import askdirectory
 
