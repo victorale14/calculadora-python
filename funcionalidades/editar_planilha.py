@@ -6,8 +6,8 @@ workbook é o que seria a planilha excel, portanto, a funcionalidade load_workbo
 
 (esse código funciona presumindo que o usuário leu anteriormente a planilha)
 
-24 - 27 imporando do módulo tkinter a função "askdirectory", e criar uma variável que pega o diretório selecionado
-28 e 29 primeiro, pega-se o input do nome do arquivo que se deseja editar e tenta-se abrir ele
+24 - 25 imporando do módulo tkinter a função "askdirectory"
+27 cria a variável pasta com a função que pergunta o dierótio para procurar o arquivo
 31 adiciona a extensão ".xlsx" junto do nome do arquivo com uma f-string, junto da pasta
 32 wb é declarado como a função que carrega o arquivo, para fins de simplificação
 33 a planilha é definida como o ativo de wb, ou seja, a a planilha que está sendo carregada está sendo definida como ativa
@@ -20,28 +20,6 @@ workbook é o que seria a planilha excel, portanto, a funcionalidade load_workbo
 53 e 54 caso não consiga por causa de erro em localizar o arquivo, avisa que não foi possível encontrar o arquivo e o código para.
 
 '''
-import os
-import tkinter as tk
-from tkinter import filedialog
-
-root = tk.Tk()
-root.withdraw()
-
-diretorio = filedialog.askdirectory(title="Selecione uma pasta")
-
-extensoes_excel = (".xlsx", ".xls")
-
-if diretorio:
-    print(f"Listando arquivos Excel em: {diretorio}\n")
-
-    for pasta_atual, subpastas, arquivos in os.walk(diretorio):
-        for arquivo in arquivos:
-            if arquivo.lower().endswith(extensoes_excel):
-                caminho_completo = os.path.join(pasta_atual, arquivo)
-                print(caminho_completo)
-else:
-    print("Nenhum diretório foi selecionado.")
-
 from openpyxl import load_workbook
 from tkinter.filedialog import askdirectory
 
