@@ -20,11 +20,9 @@ workbook é o que seria a planilha excel, portanto, a funcionalidade load_workbo
 53 e 54 caso não consiga por causa de erro em localizar o arquivo, avisa que não foi possível encontrar o arquivo e o código para.
 
 '''
-from openpyxl import load_workbook
-from tkinter.filedialog import askdirectory
+from funcionalidades.modulos import *
 
-def editar():
-    pasta = askdirectory(title='Selecione a pasta em que o arquivo excel está.')
+def editar(pasta):
     print('Qual o nome do arquivo que você gostaria de editar?')
     nome_arquivo = input('Digite o nome do arquivo: ')
     try:
