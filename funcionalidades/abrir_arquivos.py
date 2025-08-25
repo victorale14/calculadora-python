@@ -1,27 +1,15 @@
-import openpyxl
-import tkinter as tk
-from tkinter import filedialog
-import os
+from funcionalidades.modulos import *
 
-# Inicializa o Tkinter, mas esconde a janela principal que não será usada
-root = tk.Tk()
-root.withdraw()
-
-def abrir_planilha():
+def abrir_planilha(pasta):
     """
     Permite ao usuário selecionar uma pasta e o nome de um arquivo Excel,
     e então abre o arquivo para imprimir seu conteúdo.
     """
-    # Pede ao usuário para selecionar a pasta onde o arquivo Excel está
-    pasta_selecionada = filedialog.askdirectory(
-        title="Selecione a pasta onde o arquivo Excel está."
-    )
+    # Inicializa o Tkinter, mas esconde a janela principal que não será usada
+    root = tk.Tk()
+    root.withdraw()
 
-    if not pasta_selecionada:
-        print("Nenhuma pasta foi selecionada. Operação cancelada.")
-        return
-
-    print(f"Pasta selecionada: {pasta_selecionada}")
+    print(f"Pasta selecionada: {pasta}")
 
     # Pede o nome do arquivo Excel
     nome_arquivo = input("Qual o nome do arquivo Excel que você quer abrir? (sem .xlsx): ")
@@ -30,7 +18,7 @@ def abrir_planilha():
         return
 
     # Constrói o caminho completo para o arquivo
-    caminho_completo_arquivo = os.path.join(pasta_selecionada, f"{nome_arquivo}.xlsx")
+    caminho_completo_arquivo = os.path.join(pasta, f"{nome_arquivo}.xlsx")
 
     print(f"Tentando abrir o arquivo: {caminho_completo_arquivo}")
 
@@ -58,7 +46,3 @@ def abrir_planilha():
         print("Verifique se o nome do arquivo está correto e se ele está na pasta selecionada.")
     except Exception as e:
         print(f"Ocorreu um erro ao abrir a planilha: {e}")
-
-# --- Chamada da função para execução ---
-if __name__ == "__main__":
-    abrir_planilha()
